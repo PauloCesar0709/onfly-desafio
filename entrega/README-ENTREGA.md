@@ -63,3 +63,12 @@ Saída esperada do relatório completo:
 ```
 9 passed in 0.62s
 ```
+### Testes adicionais implementados
+
+| Arquivo | O que faz |
+|-------|-----------|
+| `test_noites_virada_ano.py` | Teste adicional para verificar se em viradas de ano, o número de dias de reserva é contado corretamente e o mês da reserva é igual ao mês do checkin |
+| `test_arredonda_so_na_serializacao.py` | Teste adicional para verificar se o arredondamento dos valores ocorre somente na serialização do programa |
+| `test_desempate_por_id.py` | Teste adicional para verificar se quando ocorre empate no ranking de top_hotels, os hoteis são classificados em ordem crescente de id |
+| `test_no_show.py` | Teste adicional para verificar se faturamentos NO_SHOW ficam de fora de by_month e top_hotels |
+
