@@ -25,6 +25,16 @@
 
 ---
 
+## Como corrigi
+| # | Arquivo | Correção |
+|---|---------|----------|
+| 1 | `src/onfly_report/__main__.py` | Substitui o import absoluto `from cli import main ` por um import relativo `from .cli import main` |
+| 2 | `src/onfly_report/services/status_policy.py` | Alterei `isbillable`, mudando o status de `status != "CANCELLED"` para `status == "CONFIRMED"` que passa para a faturação somente os confirmados |
+| 3 | `src/onfly_report/services/stay_calculator.py` | Alterei as noites calculadas com `checkout.day - checkin.day` (dia do mês) para `(checkout - checkin).days` que passa a considerar a data completa |
+| 4 | `src/onfly_report/services/currency_converter.py` | Alterei a conversão deixando somente `return amount * rate` sem alterar o tipo para `float` mantendo a exatidão |
+| 5 | ` src/onfly_report/services/report_builder.py` | Alterei o `ranked_hotels` com `item: (-item[1]["amount"], item[0])` fazendo com que o maio valor vire o menor número, o que faz com que que ele venha em primeiro na ordem crescente |
+| 6 | `src/onfly_report/repositories/csvreservation__repository.py` | Retirei o trecho de código `if len(rows) == 200: break ` fazendo com que o programa leia todas as linhas do arquivo |
+
 ## Como validar
 
 ```bash
@@ -34,6 +44,11 @@ pytest -q
 PYTHONPATH=src python -m onfly_ report --input data/exemplo-validacao.csv --rates data/taxas_cambio.csv --output output/exemplo.json
 PYTHONPATH=src python -m onfly_ report --input data/reservas_hoteis.csv --rates data/taxas_cambio.csv --output output/report.json
 ```
+---
+
+Saída esperada do relatório de exemplo:
+`Reservas: 12 | Confirmadas: 9 | Noites: 28 | Total BRL: 7566.00`
+
 ---
 
 Saída esperada do relatório completo:
