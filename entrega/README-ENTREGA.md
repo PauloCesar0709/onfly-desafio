@@ -35,6 +35,8 @@
 | 5 | ` src/onfly_report/services/report_builder.py` | Alterei o `ranked_hotels` com `item: (-item[1]["amount"], item[0])` fazendo com que o maio valor vire o menor número, o que faz com que que ele venha em primeiro na ordem crescente |
 | 6 | `src/onfly_report/repositories/csvreservation__repository.py` | Retirei o trecho de código `if len(rows) == 200: break ` fazendo com que o programa leia todas as linhas do arquivo |
 
+---
+
 ## Como validar
 
 ```bash
