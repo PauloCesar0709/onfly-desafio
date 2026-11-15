@@ -1,0 +1,155 @@
+▗ ▗   ▖ ▖  Claude Code v2.1.322
+           Opus 5.5 · Claude Pro
+ ▘▘   ▝▝   ~/Downloads/onfly-desafio
+
+  Fable 5.2 is here for your longest and toughest coding tasks, and is included in your plan until November 16. It draws down usage faster than Opus 5.5. Switch with /model.
+
+❯ Estou particioando de um processo seletivo de uma empresa chamada OnFly, fui  
+  aprovado para a proxima fase e agora terei que cumprir um desafio tecnico. O  
+  desafio se encontra nessa pasta, acesse primeiramente o README para se        
+  contextualizar sobre o desafio, sobre o que e o algoritmo, para que ele serve 
+  e como ele funciona. Apos isso,vasculhe a pasta src, tests e data para ver    
+  mais sobre o codigo. Depois disso, como e um processo tecnico e como          
+  provavelmente irei ser cobrado acerca disso mais tardiamente no processo,     
+  nessa propria pasta, cria uma subpasta chamada documentacao-desafio, nesta    
+  pasta voce irá adicionar dois documentos, um sobre o algoritmo, me mostrando  
+  para o que ele serve, como ele funciona, o que ele precisa fazer e mais sobre 
+  o erro encontrado, o que esse erro impacta no codigo e como atrapalha ele de  
+  alcancar seu objetivo, seja bem detalhista para que eu possa me               
+  contextualizar e saber mais sobre o codigo e suas funcionalidades. No outro   
+  arquivo, coloque o passo a passo detalhadado das mudancas que precisam ser    
+  feitas, coloque tambem o motivo da realizacao das mudancas, como e porque     
+  elas resolvem o problema do algoritmo, para que assim, eu possa saber cada    
+  detalhe da solucao e reproduzi-la com clareza. Indique tambem o que precisa   
+  ser colocado na pasta de output e entraga. Nao altere o codigo fonte, caso    
+  queira que faca isso lhe pedirei em outro momento, so indique as etapas para  
+  que eu consiga realizar a correcao. Os arquivos podem ser do tipo pdf e o     
+  nome deles fica a seu criterio, coloque nomes indicativos que evidencializem  
+  o objetivo de cada documento.                                                 
+
+⏺ Vou começar lendo o README e explorando o projeto.
+
+  Listed 1 directory, ran 2 shell commands (ctrl+o to expand)
+
+⏺ Já identifiquei vários defeitos no código. Agora vou analisar os dados a fundo
+  e confirmar o comportamento atual rodando os testes.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+⏺ Tenho o uv disponível. Vou criar um ambiente isolado no scratchpad com Python
+  3.11 para rodar os testes no código original (sem modificá-lo).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Os 5 testes falham por causa do erro de import, então vou aplicar as correções
+  uma por vez em uma cópia no scratchpad para medir o efeito de cada defeito. 
+  · summary
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ A amostra confere com a tabela do README após as 6 correções. Agora faço uma
+  verificação independente do relatório de 300 linhas e limpo o __pycache__
+  deixado na pasta original. · summary
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ A verificação independente bate exatamente com o relatório: 300 reservas, 235
+  confirmadas, 1.347 noites, R$ 396.170,00 e média de 294,11. Vou buscar o
+  relatório "com bugs" para usar como comparativo antes/depois nos documentos. 
+  · summary
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Agora escrevo e valido um arquivo de testes adicionais para o guia,
+  confirmando que passam no código corrigido e falham no original. · summary
+
+  Made 1 scratchpad edit +99, ran 1 shell command (ctrl+o to expand)
+
+⏺ Todos os 13 testes passam agora, e 4 dos novos falham no código original, o
+  que mostra que pegam bugs reais. Vou conferir o git logo em seguida, já que o
+  status indicou que o repositório está na pasta home. · summary
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ A pasta está num repositório git na sua home, ligado a um remote de um
+  trabalho da PUC, então vou explicar no guia como criar um repositório próprio
+  para o desafio. Agora começo a escrever os documentos. · summary
+
+  Made 2 scratchpad edits +406 (ctrl+o to expand)
+
+⏺ Agora o segundo documento, o guia de correção:
+
+  Made 1 scratchpad edit +448 (ctrl+o to expand)
+
+⏺ Agora vou gerar os PDFs com o Chrome em modo headless e salvá-los na nova
+  pasta documentacao-desafio.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Vou conferir visualmente algumas páginas para garantir que o layout ficou
+  legível.
+
+  Read 2 files, ran 1 shell command (ctrl+o to expand)
+
+⏺ Criei os dois documentos em PDF. Não alterei o código-fonte, os testes nem os
+  dados.
+
+  Pasta: documentacao-desafio/
+
+  Arquivo: 01-Entendendo-o-Algoritmo-e-os-Defeitos.pdf (15 págs.)
+  Conteúdo: Para que o programa serve, as regras de negócio, cada arquivo do
+    código, o fluxo de processamento com um exemplo calculado à mão, os dados e
+  o
+     que cada teste verifica. Depois, cada defeito: onde está, por que está
+    errado, o que causa nos números e qual teste o revela. Fecha com perguntas
+    que podem cair na entrevista, já respondidas.
+  ────────────────────────────────────────
+  Arquivo: 02-Guia-de-Correcao-Passo-a-Passo.pdf (15 págs.)
+  Conteúdo: Preparação do ambiente, as 6 correções com o código antes e depois,
+  o
+    motivo de cada uma, o que muda no resultado e como conferir. Inclui testes
+    novos, os valores finais esperados, o que vai em output/ e em entrega/ (com
+    modelos de README-ENTREGA.md e declaracao.md) e como publicar no GitHub.
+
+  Os 6 defeitos:
+  1. __main__.py: usa from cli import main em vez de from .cli import main. O
+     programa nem inicia, e por isso todos os testes falhavam pelo mesmo motivo.
+  2. status_policy.py: a regra deixa de fora só os cancelados, então reservas
+     NO_SHOW entram no faturamento. Deveria contar apenas CONFIRMED.
+  3. stay_calculator.py: calcula as noites subtraindo o dia do mês (.day).
+     Quando a estadia passa de um mês para outro, o resultado fica negativo
+     (ex.: 30/01 → 02/02 dá −28).
+  4. currency_converter.py: divide o valor pela taxa de câmbio em vez de
+     multiplicar, e ainda faz a conta com float em vez de Decimal.
+  5. report_builder.py: o ranking de hotéis sai em ordem crescente, então mostra
+     os hotéis com menor gasto. A correção é ordenar por (-valor, hotel_id);
+     reverse=True inverteria também o desempate por hotel_id.
+  6. csv_reservation_repository.py: a leitura para em 200 linhas sem avisar, e o
+     arquivo tem 300. Nenhum dos testes fornecidos pega isso; só aparece
+     rodando o arquivo real.
+
+  Como conferi: apliquei as correções numa cópia separada do projeto, com Python
+  3.11.
+  - Testes: os 5 fornecidos passaram, e também 8 testes novos que escrevi, num
+    total de 13. Quatro desses novos falham no código original.
+  - Amostra do README: bateu 100%.
+  - Arquivo completo: o relatório correto dá 300 reservas, 1347 noites e R$
+    396.170,00. Um script separado, que não usa o código do projeto, chegou aos
+    mesmos números.
+
+  Três pontos que pedem sua atenção:
+  - Repositório git: a pasta do desafio está dentro de um repositório git que
+    começa na sua pasta pessoal e aponta para um trabalho da PUC. Antes de
+    commitar, crie um repositório próprio com git init dentro de onfly-desafio
+    (passo 0.2 do guia).
+  - Python: o seu Mac tem só o Python 3.9. O guia mostra como instalar o 3.11
+    com o uv que você já tem.
+  - Uso de IA: como esta análise foi feita comigo, o README pede o "caminho com
+    IA". Rode /export nesta conversa e salve em entrega/uso-de-ia/sessao-01.md,
+    junto com a declaracao.md. O modelo da declaração está no guia.
+
+  Quando quiser que eu aplique as correções no código, é só pedir.
+
+✻ Sautéed for 7m 40s · done sábado, 22:19
+
+※ recap: Você se preparava para o desafio técnico da Onfly, e os dois PDFs de estudo (algoritmo/defeitos e guia de correção) estão prontos em documentacao-desafio. O próximo passo é criar um repositório git próprio dentro da pasta e aplicar as 6 correções seguindo o guia. (disable recaps in /config)
